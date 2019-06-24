@@ -1,22 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rtf2Html", "Rtf2Html\Rtf2Html.csproj", "{B1F1A364-20BD-47A2-BBC9-3D022E065691}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Debug|x86.ActiveCfg = Debug|x86
+		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Debug|x86.Build.0 = Debug|x86
 		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Release|x86.ActiveCfg = Release|x86
+		{B1F1A364-20BD-47A2-BBC9-3D022E065691}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E926633-2428-4267-9732-966D3B67B263}
 	EndGlobalSection
 EndGlobal

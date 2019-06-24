@@ -7,20 +7,27 @@ namespace Rtf2Html
     {
         public static void Main(string[] args)
         {
-            var rtfInput = GetArg(args, 0, "Document.rtf");
+            //var rtfInput = GetArg(args, 0, "Document.rtf");
 
-            var rtf = File.ReadAllText(rtfInput);
+            //var rtf = File.ReadAllText(rtfInput);
 
-            //var xaml = RtfToXamlConverter.RtfToXaml(rtf);
-            //File.WriteAllText("xaml.xaml", xaml);
+            ////var xaml = RtfToXamlConverter.RtfToXaml(rtf);
+            ////File.WriteAllText("xaml.xaml", xaml);
 
-            //var rtf2 = RtfToXamlConverter.XamlToRtf(xaml);
-            //File.WriteAllText("rtf2.rtf", rtf2);
+            ////var rtf2 = RtfToXamlConverter.XamlToRtf(xaml);
+            ////File.WriteAllText("rtf2.rtf", rtf2);
 
-            //var plainText = RtfToPlaintTextConverter.RtfToPlainText(rtf);
-            //File.WriteAllText("text.txt", plainText);
+            ////var plainText = RtfToPlaintTextConverter.RtfToPlainText(rtf);
+            ////File.WriteAllText("text.txt", plainText);
 
-            var htmlOutput = GetArg(args, 1, Path.ChangeExtension(rtfInput, ".html"));
+            //var htmlOutput = GetArg(args, 1, Path.ChangeExtension(rtfInput, ".html"));
+            //var contentUriPrefix = Path.GetFileNameWithoutExtension(htmlOutput);
+            //var htmlResult = RtfToHtmlConverter.RtfToHtml(rtf, contentUriPrefix);
+            //htmlResult.WriteToFile(htmlOutput);
+
+            var rtf = File.ReadAllText(@"C:\Users\Administrator\Desktop\test.rtf");
+
+            var htmlOutput = @"D:\test11.html";
             var contentUriPrefix = Path.GetFileNameWithoutExtension(htmlOutput);
             var htmlResult = RtfToHtmlConverter.RtfToHtml(rtf, contentUriPrefix);
             htmlResult.WriteToFile(htmlOutput);

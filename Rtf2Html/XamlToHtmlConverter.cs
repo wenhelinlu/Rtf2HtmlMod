@@ -357,6 +357,11 @@ namespace Rtf2Html
             }
         }
 
+        /// <summary>
+        /// 处理图片
+        /// </summary>
+        /// <param name="htmlWriter"></param>
+        /// <param name="inlineStyle"></param>
         private void AddComplexProperty(XmlWriter htmlWriter, StringBuilder inlineStyle)
         {
             Debug.Assert(_xamlReader.NodeType == XmlNodeType.Element);
@@ -366,6 +371,9 @@ namespace Rtf2Html
                 if (ReadNextToken() && _xamlReader.Name == "BitmapImage")
                 {
                     var imageUri = _xamlReader.GetAttribute("UriSource");
+
+                    //data uri格式的图片源
+                    string imgDataUri = "";
                     if (!string.IsNullOrWhiteSpace(imageUri))
                     {
                         // check new image
@@ -376,15 +384,7 @@ namespace Rtf2Html
                             using (var stream = imageEntry.Open())
                             {
                                 var image = ToByteArray(stream);
-                                var identicalContent = _htmlResult.Content.FirstOrDefault(kvp => image.SequenceEqual(kvp.Value));
-                                var isIdentical = !default(KeyValuePair<string, byte[]>).Equals(identicalContent);
-                                if (isIdentical)
-                                    imageUri = identicalContent.Key;
-                                else
-                                {
-                                    imageUri = string.Concat(ContentUriPrefix, imageUri).Replace("/./", "/");
-                                    _htmlResult.Content[imageUri] = image;
-                                }
+                                imgDataUri = GetImageDataUri(entryPath, image);
                             }
                         }
 
@@ -395,7 +395,8 @@ namespace Rtf2Html
                             inlineStyle.Remove(0, inlineStyle.Length);
                         }
 
-                        htmlWriter.WriteAttributeString("src", imageUri);
+                        //插入base64编码的图片
+                        htmlWriter.WriteAttributeString("src", imgDataUri);
 
                         while (_xamlReader.NodeType != XmlNodeType.EndElement)
                             ReadNextToken();
@@ -406,10 +407,39 @@ namespace Rtf2Html
 
             if (inlineStyle != null && _xamlReader.Name.EndsWith(".TextDecorations"))
                 inlineStyle.Append("text-decoration:underline;");
-            
+
             // Skip the element representing the complex property
             WriteElementContent(null, null);
         }
+
+        /// <summary>
+        /// 将图片转换为html中的data uri格式（仅source部分）
+        /// </summary>
+        /// <param name="imgFormat">图片文件扩展名</param>
+        /// <param name="stream">图片流</param>
+        /// <returns></returns>
+        private string GetImageDataUri(string imgFormat, byte[] stream)
+        {
+
+            return "data:image/"
+                 + imgFormat
+                 + ";base64,"
+                 + Convert.ToBase64String(stream);
+        }
+
+        /// <summary>
+        /// 将图片转换成Html中的Data Uri格式
+        /// </summary>
+        /// <param name="imgFile">图片文件路径</param>
+        /// <returns></returns>
+        private string GetImageDataUri(string imgFile)
+        {
+            return "<img src=\"data:image/"
+                     + Path.GetExtension(imgFile).Replace(".", "")
+                     + ";base64,"
+                     + Convert.ToBase64String(File.ReadAllBytes(imgFile)) + "\" />";
+        }
+
 
         private void WriteElement(XmlTextWriter htmlWriter, StringBuilder inlineStyle)
         {
