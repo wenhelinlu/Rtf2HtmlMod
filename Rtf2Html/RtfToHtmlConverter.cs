@@ -1,4 +1,4 @@
-﻿namespace Rtf2Html
+﻿namespace Rtf2HtmlMod
 {
     internal static class RtfToHtmlConverter
     {

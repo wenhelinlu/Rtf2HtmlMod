@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 
-namespace Rtf2Html
+namespace Rtf2HtmlMod
 {
     internal static class RtfToXamlConverter
     {

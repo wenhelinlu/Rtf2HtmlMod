@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Rtf2Html
+namespace Rtf2HtmlMod
 {
     internal static class Program
     {
@@ -27,7 +27,7 @@ namespace Rtf2Html
 
             var rtf = File.ReadAllText(@"C:\Users\Administrator\Desktop\test.rtf");
 
-            var htmlOutput = @"D:\test11.html";
+            var htmlOutput = @"D:\test12.html";
             var contentUriPrefix = Path.GetFileNameWithoutExtension(htmlOutput);
             var htmlResult = RtfToHtmlConverter.RtfToHtml(rtf, contentUriPrefix);
             htmlResult.WriteToFile(htmlOutput);

@@ -3,7 +3,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Documents;
 
-namespace Rtf2Html
+namespace Rtf2HtmlMod
 {
     internal static class RtfToPlaintTextConverter
     {
