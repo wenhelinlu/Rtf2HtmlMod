@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Rtf2HtmlMod;
 
 namespace TestDemo
 {
@@ -29,10 +30,12 @@ namespace TestDemo
         {
             var rtf = File.ReadAllText(@"C:\Users\Administrator\Desktop\test.rtf");
 
-            var htmlOutput = @"D:\test12.html";
+            var htmlOutput = @"D:\test13.html";
             var contentUriPrefix = Path.GetFileNameWithoutExtension(htmlOutput);
             var htmlResult = RtfToHtmlConverter.RtfToHtml(rtf, contentUriPrefix);
             htmlResult.WriteToFile(htmlOutput);
+
+            this.wb.Navigate(htmlOutput);
         }
     }
 }

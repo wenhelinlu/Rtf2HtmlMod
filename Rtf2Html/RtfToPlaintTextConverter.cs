@@ -5,7 +5,7 @@ using System.Windows.Documents;
 
 namespace Rtf2HtmlMod
 {
-    internal static class RtfToPlaintTextConverter
+    public static class RtfToPlaintTextConverter
     {
         public static string RtfToPlainText(string rtf, Encoding encoding = null)
         {

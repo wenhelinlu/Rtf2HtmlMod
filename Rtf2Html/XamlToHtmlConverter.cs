@@ -12,7 +12,7 @@ using System.Xml;
 
 namespace Rtf2HtmlMod
 {
-    internal class XamlToHtmlConverter
+    public class XamlToHtmlConverter
     {
         private ZipArchive _zip;
         private XmlTextReader _xamlReader;
@@ -415,14 +415,14 @@ namespace Rtf2HtmlMod
         /// <summary>
         /// 将图片转换为html中的data uri格式（仅source部分）
         /// </summary>
-        /// <param name="imgFormat">图片文件扩展名</param>
+        /// <param name="imgFile">图片文件路径</param>
         /// <param name="stream">图片流</param>
         /// <returns></returns>
-        private string GetImageDataUri(string imgFormat, byte[] stream)
+        private string GetImageDataUri(string imgFile, byte[] stream)
         {
 
             return "data:image/"
-                 + imgFormat
+                 + Path.GetExtension(imgFile).Replace(".", "")
                  + ";base64,"
                  + Convert.ToBase64String(stream);
         }

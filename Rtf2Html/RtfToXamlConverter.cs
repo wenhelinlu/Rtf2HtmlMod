@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace Rtf2HtmlMod
 {
-    internal static class RtfToXamlConverter
+    public static class RtfToXamlConverter
     {
         public static bool RtfContainsImage(string rtfText)
         {

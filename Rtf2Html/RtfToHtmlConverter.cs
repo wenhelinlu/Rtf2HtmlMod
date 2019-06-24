@@ -1,6 +1,6 @@
 ﻿namespace Rtf2HtmlMod
 {
-    internal static class RtfToHtmlConverter
+    public static class RtfToHtmlConverter
     {
         public static HtmlResult RtfToHtml(string rtf, string contentUriPrefix = null, bool asFullDocument = true)
         {

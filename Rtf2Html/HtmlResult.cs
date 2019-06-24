@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Rtf2HtmlMod
 {
-    internal class HtmlResult
+    public class HtmlResult
     {
         public string Html { get; set; }
         public Dictionary<string, byte[]> Content { get; }
